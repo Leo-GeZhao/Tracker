@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import PlanForm
+
+from .forms import PlanForm, UpdatePlanForm
 from .models import Plan
+from django.views.generic import UpdateView
+
 
 # Create your views here.
 def index(request):
@@ -29,3 +32,9 @@ def plan_detail(request, plan_id):
 def delete_plan(request, plan_id):
     Plan.objects.get(id = plan_id).delete()
     return redirect('index')
+
+class PlanUpdate(UpdateView):
+    model = Plan
+    form_class = UpdatePlanForm
+    template_name = 'update_plan.html'
+    

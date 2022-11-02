@@ -10,8 +10,18 @@ class PlanForm(ModelForm):
         model = Plan
         fields = '__all__'
         widgets = {
-            'description': forms.Textarea(attrs = {}),
+            'description': forms.Textarea(attrs = {'style' : 'margin-top:10px;'}),
             "deadline": forms.DateInput(attrs = {'id' : 'id_deadline', 'type' : 'date'})
+        }
+class UpdatePlanForm(ModelForm):
+    class Meta:
+        model = Plan
+        fields = ['title','target','description', 'deadline']
+        widgets = {
+            'title': forms.TextInput(attrs = {'readonly' : True, 'style' : 'border:none transparent; outline: none;'}),
+            'target': forms.TextInput(attrs = {'readonly' : True, 'style' : 'border:none transparent; outline: none;', 'size' : 50}),
+            'description': forms.Textarea(attrs = {'class' : 'form-control', 'style': 'width:400px; margin-top:10px;'}),
+            "deadline": forms.DateInput(attrs = { 'type' : 'date', 'style' : 'margin-top:20px'})
         }
         
 

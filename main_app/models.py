@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Plan(models.Model):
@@ -10,3 +11,6 @@ class Plan(models.Model):
     
     def __str__(self):
         return f"{self.title} estimated to be complete at {self.deadline}, which is created on {self.create_date}"
+
+    def get_absolute_url(self):
+        return reverse('plan_detail', kwargs={'plan_id': self.id})

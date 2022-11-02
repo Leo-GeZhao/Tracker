@@ -9,7 +9,7 @@
     <div class="card-body">
       <h5 class="card-title">{{plan.target}}</h5>
       <p class="card-text">{{plan.description}}</p>
-      <a href="#" class="btn btn-primary">EDIT</a>
+      <a href="{% url 'update_plan' plan.id %}" class="btn btn-primary">EDIT</a>
     </div>
     <div class="card-footer text-muted">
       Created on - {{plan.create_date}}
