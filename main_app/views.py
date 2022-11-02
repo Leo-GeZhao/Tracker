@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from .forms import PlanForm, UpdatePlanForm
-from .models import Plan
+from .forms import PlanForm, UpdatePlanForm, ProgressForm
+from .models import Plan, Progress
 from django.views.generic import UpdateView
 
 
@@ -24,8 +24,10 @@ def add_plan(request):
 
 def plan_detail(request, plan_id):
     plan = Plan.objects.get(id = plan_id)
+    new_progress_form = ProgressForm
     context = {
         'plan' : plan,
+        'new_progress_form' : new_progress_form,
     }
     return render(request,'plan_detail.html', context)
 
@@ -37,4 +39,12 @@ class PlanUpdate(UpdateView):
     model = Plan
     form_class = UpdatePlanForm
     template_name = 'update_plan.html'
+
+def add_progress(request, plan_id):
+    form = ProgressForm(request.POST)
+    if form.is_valid():
+        new_form = form.save(commit=False)
+        new_form.plan_id = plan_id
+        new_form.save()
+    return redirect('plan_detail', plan_id = plan_id)
     

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from main_app.models import Plan
+from main_app.models import Plan, Progress
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -11,7 +11,7 @@ class PlanForm(ModelForm):
         fields = '__all__'
         widgets = {
             'description': forms.Textarea(attrs = {'style' : 'margin-top:10px;'}),
-            "deadline": forms.DateInput(attrs = {'id' : 'id_deadline', 'type' : 'date'})
+            "deadline": forms.DateInput(attrs = {'type' : 'date'})
         }
 class UpdatePlanForm(ModelForm):
     class Meta:
@@ -23,6 +23,13 @@ class UpdatePlanForm(ModelForm):
             'description': forms.Textarea(attrs = {'class' : 'form-control', 'style': 'width:400px; margin-top:10px;'}),
             "deadline": forms.DateInput(attrs = { 'type' : 'date', 'style' : 'margin-top:20px'})
         }
-        
+
+class ProgressForm(ModelForm):
+    class Meta:
+        model = Progress
+        fields = ['progress', 'estimate_date']
+        widgets = {
+            "estimate_date": forms.DateInput(attrs = {'type' : 'date'})
+        }
 
         
