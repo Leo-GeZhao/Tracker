@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-around" style="margin-left:50px">
+    <div style="margin-top:200px">
+        <form action="{% url 'add_plan' %}" method="post">
+            {% csrf_token %}
+            <h4 style="margin-bottom:20px">Add A Plan</h4>
+            {{new_plan_form.as_p}}
+            <input type="submit" value="Add" class="btn btn-primary">
+        </form>  
+    </div>
+    
+    <div class="container" style="margin-left:100px">
+        <div class="row">
+            {% for plan in plans %}
+            <div class="col-lg">
+                <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                    <img src="../static/img/pencil.webp" class="card-img-top" alt="..." style="height:100px">
+                    <div class="card-body">
+                      <h5 class="card-title">{{plan.title}}</h5>
+                      <p class="card-text">{{plan.target}}</p>
+                      <p class="card-text"><small class="text-muted">{{plan.deadline}}</small></p>
+                      <div class="btn-toolbar" role="toolbar">
+                        <a href="{% url 'plan_detail' plan.id %}" class="btn btn-primary" role="button">Detail</a>
+                        <form action="{% url 'delete_plan' plan.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary" style="margin-left:10px">Delete</button>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          {% endfor%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
