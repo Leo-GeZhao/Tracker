@@ -27,6 +27,16 @@
                             {% csrf_token %}
                             <button type="submit" class="btn btn-primary" style="margin-left:10px">Delete</button>
                         </form>
+                        <div class="dropdown" style="margin-top: 10px;">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Progress
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {% for progress in plan.progress_set.all %}
+                              <a class="dropdown-item {{ progress.is_complete|yesno:'link-success, link-danger' }}" href="{% url 'plan_detail' plan.id %}">{{progress.progress}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
                       </div>
                     </div>
                 </div>
