@@ -14,14 +14,19 @@ class Plan(models.Model):
 
     def get_absolute_url(self):
         return reverse('plan_detail', kwargs={'plan_id': self.id})
-
+    
+    class Meta:
+        ordering = ['deadline']
 
 class Progress(models.Model):
     progress = models.CharField(max_length = 100)
     estimate_date = models.DateField()
     create_deate = models.DateField(auto_now_add = True)
     plan = models.ForeignKey(Plan, on_delete = models.CASCADE)
-    status = models.BooleanField(default = False)
+    is_complete = models.BooleanField(default = False)
 
     def __str__(self):
         return f"{self.progress} made on {self.create_deate} is estimated to be finished at {self.estimate_date}"
+    
+    class Meta:
+        ordering = ['estimate_date']

@@ -52,7 +52,15 @@ def delete_progress(request, plan_id, progress_id,):
     progress = Progress.objects.filter(id = progress_id).delete()
     return redirect('plan_detail', plan_id = plan_id)
 
-def update_status(request,plan_id,progress_id):
-    progress = Progress.objects.filter(id = progress_id).update(status = 'True')
+def update_is_complete(request,plan_id,progress_id):
+    # progress = Progress.objects.filter(id = progress_id).update(status = 'True')
+    progress = Progress.objects.filter(id = progress_id)
+    # progress_is_complete = Progress.objects.filter(id = progress_id).values('is_complete')
+    progress_is_complete = Progress.objects.values_list('is_complete',flat = True).get(id = progress_id)
+    print(progress_is_complete)
+    if progress_is_complete:
+        progress.update(is_complete = False)
+    else:
+        progress.update(is_complete = True)
     return redirect('plan_detail', plan_id = plan_id)
     

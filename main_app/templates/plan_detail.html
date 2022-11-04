@@ -34,13 +34,9 @@
                             <div class="card-body">
                                 <h5 class="card-text">{{progress.progress}}</h5>
                                 <p class="card-text">{{progress.estimate_date}}</p>
-                                {% if progress.status == False %}
-                                <form action="{% url 'update_status' plan.id progress.id%}" method="post">
+                                <form action="{% url 'update_is_complete' plan.id progress.id%}" method="post">
                                     {% csrf_token %}
-                                    <input type="submit" value="Not Complete" class="btn btn-danger">
-                                    {% else %}
-                                    <a href="#" class="btn btn-success">Complete</a>
-                                    {% endif %}
+                                    <input type="submit" value="{{ progress.is_complete|yesno:'Complete, Not Complete' }}" class="btn {{ progress.is_complete|yesno:'btn-success, btn-danger' }}">
                                 </form>
                                 <form action="{% url 'delete_progress' plan.id progress.id %}" method="post" style="margin-top:20px">
                                     {% csrf_token %}

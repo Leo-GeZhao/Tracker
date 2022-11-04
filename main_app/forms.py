@@ -13,6 +13,7 @@ class PlanForm(ModelForm):
             'description': forms.Textarea(attrs = {'style' : 'margin-top:10px;'}),
             "deadline": forms.DateInput(attrs = {'type' : 'date'})
         }
+        
 class UpdatePlanForm(ModelForm):
     class Meta:
         model = Plan
