@@ -47,4 +47,12 @@ def add_progress(request, plan_id):
         new_form.plan_id = plan_id
         new_form.save()
     return redirect('plan_detail', plan_id = plan_id)
+
+def delete_progress(request, plan_id, progress_id,):
+    progress = Progress.objects.filter(id = progress_id).delete()
+    return redirect('plan_detail', plan_id = plan_id)
+
+def update_status(request,plan_id,progress_id):
+    progress = Progress.objects.filter(id = progress_id).update(status = 'True')
+    return redirect('plan_detail', plan_id = plan_id)
     

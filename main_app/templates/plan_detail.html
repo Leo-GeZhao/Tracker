@@ -9,6 +9,7 @@
     <div class="card-body">
       <h5 class="card-title">{{plan.target}}</h5>
       <p class="card-text">{{plan.description}}</p>
+      <p class="text-muted">Estimation : {{plan.deadline}}</p>
       <a href="{% url 'update_plan' plan.id %}" class="btn btn-primary">EDIT</a>
     </div>
     <div class="card-footer text-muted">
@@ -33,7 +34,18 @@
                             <div class="card-body">
                                 <h5 class="card-text">{{progress.progress}}</h5>
                                 <p class="card-text">{{progress.estimate_date}}</p>
-                                <a href="#" class="btn btn-danger">Not Completed</a>
+                                {% if progress.status == False %}
+                                <form action="{% url 'update_status' plan.id progress.id%}" method="post">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Not Complete" class="btn btn-danger">
+                                    {% else %}
+                                    <a href="#" class="btn btn-success">Complete</a>
+                                    {% endif %}
+                                </form>
+                                <form action="{% url 'delete_progress' plan.id progress.id %}" method="post" style="margin-top:20px">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                </form>
                             </div>
                         </div>
                     </div>

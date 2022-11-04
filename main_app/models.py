@@ -21,6 +21,7 @@ class Progress(models.Model):
     estimate_date = models.DateField()
     create_deate = models.DateField(auto_now_add = True)
     plan = models.ForeignKey(Plan, on_delete = models.CASCADE)
+    status = models.BooleanField(default = False)
 
     def __str__(self):
         return f"{self.progress} made on {self.create_deate} is estimated to be finished at {self.estimate_date}"

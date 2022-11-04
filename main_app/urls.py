@@ -8,6 +8,12 @@ urlpatterns = [
     path('plan/<int:plan_id>/', views.plan_detail, name='plan_detail'),
     path('plan/<int:plan_id>/delete/', views.delete_plan, name='delete_plan'),
     path('plan/<int:pk>/update/', views.PlanUpdate.as_view(), name='update_plan'),
-    path('plan/<int:plan_id>/add_progress', views.add_progress, name='add_progress')
+
+    path('plan/<int:plan_id>/add_progress', views.add_progress, name='add_progress'),
+    path('plan/<int:plan_id>/delete_progress/<progress_id>', views.delete_progress, name='delete_progress'),
+    path('plan/<int:plan_id>/update_status/<progress_id>/', views.update_status, name='update_status'),
+    
+    
+    
     
 ]
