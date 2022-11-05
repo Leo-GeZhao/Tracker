@@ -11,6 +11,9 @@
       <p class="card-text">{{plan.description}}</p>
       <p class="text-muted">Estimation : {{plan.deadline}}</p>
       <a href="{% url 'update_plan' plan.id %}" class="btn btn-primary">EDIT</a>
+      <button type="button" class="btn btn-warning">
+        Progress <span class="badge text-success }}">{{progress_count}}</span>
+      </button>
     </div>
     <div class="card-footer text-muted">
       Created on - {{plan.create_date}}
@@ -25,7 +28,7 @@
             <input type="submit" value="Add" class="btn btn-primary">
         </form>  
     </div>
-    <div style="display: inline-block; margin-left:150px; margin-top: 50px;">
+    <div style="display: inline-block; margin-left:100px; margin-top: 50px;">
         <div style=" width: 800px; ">
             {% for progress in plan.progress_set.all %}
                 <div class="row" style="margin-top:20px;">
@@ -47,8 +50,9 @@
                     </div>
                 </div>
             {% endfor %}
-            </div>
+        </div>
     </div>
+
     
 
     
