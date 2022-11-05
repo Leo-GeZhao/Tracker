@@ -38,6 +38,15 @@ def delete_plan(request, plan_id):
     Plan.objects.get(id = plan_id).delete()
     return redirect('index')
 
+def add_priority(request, plan_id):
+    plan = Plan.objects.filter(id = plan_id)
+    plan_is_priority = Plan.objects.values_list('is_priority',flat = True).get(id = plan_id)
+    if plan_is_priority:
+        plan.update(is_priority = False)
+    else:
+        plan.update(is_priority = True)
+    return redirect('index')
+
 class PlanUpdate(UpdateView):
     model = Plan
     form_class = UpdatePlanForm

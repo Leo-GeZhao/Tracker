@@ -37,6 +37,13 @@
                                 {% endfor %}
                             </div>
                         </div>
+                        <div id="add_priority" class="form-check form-switch" style="margin-top:10px;">
+                            <form action="{% url 'add_priority' plan.id %}" method="post">
+                                {% csrf_token %}
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" onchange="document.getElementById('add_priority').submit()" checked>
+                                <label class="form-check-label" for="flexSwitchCheckChecked">Mark as priority</label>
+                            </form>
+                        </div>
                       </div>
                     </div>
                 </div>
