@@ -25,12 +25,16 @@ def add_plan(request):
 def plan_detail(request, plan_id):
     plan = Plan.objects.get(id = plan_id)
     new_progress_form = ProgressForm
+    complete_progress_count = Progress.objects.filter(is_complete = True).count()
     progress_count = Progress.objects.all().count()
+    complete_percentage = round((complete_progress_count/progress_count) * 100,2)
     
     context = {
         'plan' : plan,
         'new_progress_form' : new_progress_form,
-        'progress_count' : progress_count
+        'progress_count' : progress_count,
+        'complete_progress_count' : complete_progress_count,
+        'complete_percentage' : complete_percentage,
     }
     return render(request,'plan_detail.html', context)
 
