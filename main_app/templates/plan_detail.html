@@ -11,13 +11,9 @@
       <p class="card-text">{{plan.description}}</p>
       <p class="text-muted">Estimation : {{plan.deadline}}</p>
       <a href="{% url 'update_plan' plan.id %}" class="btn btn-primary">EDIT</a>
-      <!-- <button type="button" class="btn btn-warning">
-        Progress <span class="badge text-success }}">{{progress_count}}</span>
-      </button> -->
-      <div class="progress" style="margin-top:20px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{complete_percentage}}% " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{complete_percentage}}%</div>
-      </div>
-      
+            <div class="progress" style="margin-top:20px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{complete_percentage}}% " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{complete_percentage}}% Complete</div>
+            </div>   
     </div>
     <div class="card-footer text-muted">
       Created on - {{plan.create_date}}

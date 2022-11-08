@@ -25,10 +25,12 @@ def add_plan(request):
 def plan_detail(request, plan_id):
     plan = Plan.objects.get(id = plan_id)
     new_progress_form = ProgressForm
-    complete_progress_count = Progress.objects.filter(is_complete = True).count()
-    progress_count = Progress.objects.all().count()
-    complete_percentage = round((complete_progress_count/progress_count) * 100,2)
-    
+    complete_progress_count = Plan.objects.get(id = plan_id).progress_set.filter(is_complete = True).count()
+    progress_count = Plan.objects.get(id= plan_id).progress_set.all().count()
+    if progress_count:
+        complete_percentage = round((complete_progress_count/progress_count) * 100,2)
+    else:
+        complete_percentage = 0
     context = {
         'plan' : plan,
         'new_progress_form' : new_progress_form,
