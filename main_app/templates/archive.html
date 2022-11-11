@@ -12,15 +12,15 @@
                   <h5 class="card-title">{{archive_plan.title}}</h5>
                   <p class="card-text">{{archive_plan.target}}</p>
                   <p class="card-text"><small class="text-muted">{{archive_plan.deadline}}</small></p>
-                  <div class="btn-toolbar" role="toolbar">
-                    
-                    
-                  </div>
+                  <form action="{% url 'make_unarchive' archive_plan.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Unarchive</button>
+                  </form>
                 </div>
             </div>
         </div>
       {% endfor%}
     </div>
 </div>
-
+ 
 {% endblock %}
