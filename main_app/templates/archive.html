@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" style="margin-left:100px">
+    <div class="row">
+        {% for archive_plan in archive_plans %}
+        <div class="col-lg">
+            <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                <img src="../static/img/pencil.webp" class="card-img-top" alt="..." style="height:100px">
+                <div class="card-body">
+                  <h5 class="card-title">{{archive_plan.title}}</h5>
+                  <p class="card-text">{{archive_plan.target}}</p>
+                  <p class="card-text"><small class="text-muted">{{archive_plan.deadline}}</small></p>
+                  <div class="btn-toolbar" role="toolbar">
+                    
+                    
+                  </div>
+                </div>
+            </div>
+        </div>
+      {% endfor%}
+    </div>
+</div>
+
+{% endblock %}

@@ -14,6 +14,8 @@ urlpatterns = [
     path('plan/<int:plan_id>/delete_progress/<progress_id>', views.delete_progress, name='delete_progress'),
     path('plan/<int:plan_id>/update_is_complete/<progress_id>/', views.update_is_complete, name='update_is_complete'),
     
+    path('archive/', views.archive, name="archive"),
+    path('plan/<int:plan_id>/make_archive',views.make_archive, name="make_archive"),
     
     
     

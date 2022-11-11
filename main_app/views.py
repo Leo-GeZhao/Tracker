@@ -80,3 +80,14 @@ def update_is_complete(request,plan_id,progress_id):
         progress.update(is_complete = True)
     return redirect('plan_detail', plan_id = plan_id,)
     
+def archive(request):
+    archive_plans = Plan.objects.filter(is_archived = True)
+    print(archive_plans)
+    context = {
+        "archive_plans" : archive_plans
+    } 
+    return render(request, 'archive.html', context)
+
+def make_archive(request,plan_id):
+    archive_plan = Plan.objects.filter(id=plan_id).update(is_archived = True)
+    return redirect('index')
