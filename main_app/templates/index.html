@@ -37,6 +37,12 @@
                                 {% endfor %}
                             </div>
                         </div>
+                        <div>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary" style="margin:11px 0 0 10px;">Archive</button>
+                            </form>
+                        </div>
                         <div id="add_priority" class="form-check form-switch" style="margin-top:10px;">
                             <form action="{% url 'add_priority' plan.id %}" method="post">
                                 {% csrf_token %}
