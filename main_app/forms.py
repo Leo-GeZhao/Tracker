@@ -8,7 +8,7 @@ class DateInput(forms.DateInput):
 class PlanForm(ModelForm):
     class Meta:
         model = Plan
-        fields = '__all__'
+        fields = ['title','target','description', 'deadline', 'is_priority']
         widgets = {
             'description': forms.Textarea(attrs = {'style' : 'margin-top:10px;'}),
             "deadline": forms.DateInput(attrs = {'type' : 'date'})
