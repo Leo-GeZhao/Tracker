@@ -1,10 +1,21 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+:root {
+    --primary-color:white;
+    --secondary-color:#212121;
+} 
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
-    background-color: red;
+    
   }
+
   
 main {
     margin-top:50px;
@@ -21,3 +32,8 @@ img {
 }
 
 
+#icon {
+    height: 30px;
+    cursor: pointer;
+    margin-left:10px;
+}
