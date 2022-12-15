@@ -10,7 +10,7 @@ class PlanForm(ModelForm):
         model = Plan
         fields = ['title','target','description', 'deadline', 'is_priority']
         widgets = {
-            'description': forms.Textarea(attrs = {'style' : 'margin-top:10px;'}),
+            'description': forms.Textarea(attrs = {'style' : 'margin-top:10px; border:1px solid lightgrey'}),
             "deadline": forms.DateInput(attrs = {'type' : 'date'})
         }
         
