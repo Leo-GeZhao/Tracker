@@ -20,15 +20,15 @@
     </div>
 </div>
 
-    <div style="display: inline-block; margin-left:50px;">
+<div style="display: inline-block; margin-left:50px;">
         <form style="display : inline-block;" action="{% url 'add_progress' plan.id %}" method="post">
             {% csrf_token %}
             <h4 style="margin-bottom:20px">Add A Progress</h4>
             {{new_progress_form.as_p}}
             <input type="submit" value="Add" class="btn btn-primary">
         </form>  
-    </div>
-    <div style="display: inline-block; margin-left:100px; margin-top: 50px;">
+</div>
+<div style="display: inline-block; margin-left:100px; margin-top: 50px;">
         <div style=" width: 800px; ">
             {% for progress in plan.progress_set.all %}
                 <div class="row" style="margin-top:20px;">
@@ -51,9 +51,5 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
-
-    
-
-    
+</div>  
 {% endblock %}
