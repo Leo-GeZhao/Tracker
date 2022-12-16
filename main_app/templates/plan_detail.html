@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card text-center mx-auto" style="width: 70%;">
+<div class="card text-center mx-auto" style="width: 80%;">
     <div class="card-header">
       <h2>{{plan.title}}</h2>
     </div>
@@ -10,7 +10,7 @@
       <p class="card-text">{{plan.description}}</p>
       <p class="text-muted">Estimation : {{plan.deadline}}</p>
       <a href="{% url 'update_plan' plan.id %}" class="btn btn-primary">EDIT</a>
-            <div class="progress" style="margin-top:20px">
+            <div class="progress mt-4 mb-2">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{complete_percentage}}% " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{complete_percentage}}% Complete</div>
             </div>   
     </div>
@@ -20,10 +20,10 @@
 </div>
 
 <div class="mt-5 d-flex justify-content-evenly ">
-    <div class="ms-5">
-            <form style="display : inline-block;" action="{% url 'add_progress' plan.id %}" method="post">
+    <div>
+            <form  action="{% url 'add_progress' plan.id %}" method="post">
                 {% csrf_token %}
-                <h4 style="margin-bottom:20px">Add A Progress</h4>
+                <h4 class="mb-4">Add A Progress</h4>
                 {{new_progress_form.as_p}}
                 <input type="submit" value="Add" class="btn btn-primary">
             </form>  
@@ -41,7 +41,7 @@
                                         {% csrf_token %}
                                         <input type="submit" value="{{ progress.is_complete|yesno:'Complete, Not Complete' }}" class="btn {{ progress.is_complete|yesno:'btn-success, btn-danger' }}">
                                     </form>
-                                    <form action="{% url 'delete_progress' plan.id progress.id %}" method="post" style="margin-top:20px">
+                                    <form action="{% url 'delete_progress' plan.id progress.id %}" method="post" class="mt-3">
                                         {% csrf_token %}
                                         <input type="submit" value="Delete" class="btn btn-danger">
                                     </form>
