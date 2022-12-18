@@ -16,12 +16,13 @@ main {
     flex:1;
     margin-top:30px;
     margin-bottom: 10px;
-    /* height: fit-content; */
 }
 
 
-img {
-    height:100px;
+.card-img-top {
+   height: 120px;
+   object-fit: cover;
+    
 }
 
 
