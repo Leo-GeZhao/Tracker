@@ -13,25 +13,24 @@
   </body>
 </head>
 <body>
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'index' %}">Sticky Notes</a>
-          <ul class="navbar-nav flex-row justify-content-end align-items-center" >
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'archive' %}">Archive</a>
-          </li>
-          <li class="nav-item">
-            <img src="../static/img/moon.png" id="icon" alt="">
-          </li>
-        </ul>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'index' %}">Sticky Notes</a>
+              <ul class="navbar-nav flex-row justify-content-end align-items-center" >
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'archive' %}">Archive</a>
+              </li>
+            </ul>
+            </div>
+        </nav>
+    </header>
     <main>
         {% block content %}
         {% endblock %}
     </main>
     <footer>
-      <div class="text-dark fixed-bottom text-center">All Rights Reserved, &copy; 2022 Sticky Notes &nbsp;</div>
+      <div class="text-dark bg-light p-2 text-center">All Rights Reserved, &copy; 2022 Sticky Notes &nbsp;</div>
     </footer>
 
 </body>

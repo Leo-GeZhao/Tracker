@@ -8,10 +8,11 @@ class DateInput(forms.DateInput):
 class PlanForm(ModelForm):
     class Meta:
         model = Plan
-        fields = ['title','target','description', 'deadline', 'is_priority']
+        fields = ['category','title','target','description', 'deadline', 'is_priority']
         widgets = {
-            'description': forms.Textarea(attrs = {'style' : 'margin-top:10px;'}),
-            "deadline": forms.DateInput(attrs = {'type' : 'date'})
+            'description': forms.Textarea(attrs = {'style' : 'margin-top:10px; border:1px solid black'}),
+            "deadline": forms.DateInput(attrs = {'type' : 'date'}),
+            'category': forms.Select(attrs = {'style': 'padding: 0 34px;'})
         }
         
 class UpdatePlanForm(ModelForm):

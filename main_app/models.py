@@ -2,7 +2,18 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+CATEGORYS = (
+    ('Study','Study'),
+    ('Work','Work'),
+    ('Life','Life')
+)
+
 class Plan(models.Model):
+    category = models.CharField(
+        max_length=20,
+        choices=CATEGORYS,
+        default=CATEGORYS[0][0]
+    )
     title = models.CharField(max_length = 50)
     target = models.CharField(max_length = 50)
     description = models.CharField(max_length = 200)
