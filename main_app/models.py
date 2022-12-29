@@ -16,7 +16,7 @@ class Plan(models.Model):
     )
     title = models.CharField(max_length = 50)
     target = models.CharField(max_length = 50)
-    description = models.CharField(max_length = 500)
+    description = models.TextField()
     deadline = models.DateField()
     create_date = models.DateField(auto_now_add = True)
     is_priority = models.BooleanField(default = False)
